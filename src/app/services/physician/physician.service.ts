@@ -9,7 +9,8 @@ import { Physician, PhysicianCreate, PhysicianUpdate, ResponseModel } from '../.
 })
 export class PhysicianService {
   apiUrl = `${environment.apiUrl}/physician`;
-  constructor(private http: HttpClient) { }
+  
+  constructor(private http: HttpClient) {}
 
   getAllPhysicians(): Observable<Physician[]> {
     return this.http.get<Physician[]>(this.apiUrl)

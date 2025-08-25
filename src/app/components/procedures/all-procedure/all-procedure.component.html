@@ -1,0 +1,38 @@
+<div style="padding: 10px 20px">
+
+    <div>
+        <button mat-button extended (click)="openProcedureDialog()">
+          <mat-icon>add</mat-icon>
+          Add Record
+        </button>
+    </div>
+
+    <div style="padding: 15px 40px">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Surgery Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="cost">
+        <th mat-header-cell *matHeaderCellDef>Surgery Cost</th>
+        <td mat-cell *matCellDef="let element">{{ element.cost }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>Action</th>
+        <td mat-cell *matCellDef="let element">
+            <div>
+                <button mat-button (click)="openProcedureDialog(element)">Edit</button>
+                <button mat-button (click)="deleteProcedure(element)">Delete</button>
+            </div>
+        </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    </div>
+
+</div>

@@ -1,0 +1,19 @@
+<div style="justify-items: center;">
+    <h2 style="padding-top: 5px;">{{isEditMode ? 'Update Procedure Details' : 'Add New Procedure'}}</h2>
+  <form [formGroup]="procedureForm" (submit)="submitForm()" style="display: flex; flex-direction: column; margin: auto; width: 80%; padding: 30px 0;">
+    <mat-form-field>
+      <input matInput placeholder="Surgery Name eg.Organ Transplant" formControlName="name" />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="number" [min]="10000" placeholder="Cost of Surgery" formControlName="cost"/>
+    </mat-form-field>
+    <div>
+        <button mat-button [disabled]="procedureForm.invalid" type="submit">
+            Submit
+        </button>
+        <button mat-button (click)="onClose()">
+            Cancel
+        </button>
+    </div>
+  </form>
+</div>

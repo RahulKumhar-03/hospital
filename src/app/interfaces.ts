@@ -36,10 +36,10 @@ export interface TrainedIn{
     treatment: Procedure
 }
 export interface Procedure{
-    procedureId: number,
+    procedureId?: number,
     name: string,
     cost: number,
-    createdOn: Date
+    createdOn?: Date
 }
 export interface PhysicianCreate{
     physicianId?: number,
@@ -54,4 +54,38 @@ export interface PhysicianUpdate{
     physicianId: number,
     name: string,
     position: string
+}
+export interface Room{
+    roomId: number,
+    roomNumber: number,
+    roomType: string,
+    availability: boolean,
+    createdOn:Date,
+    block: Block
+}
+export interface AddRoom{
+    roomId:number,
+    roomType:string,
+    roomNumber: number,
+    blockId: number,
+    availability: boolean
+}
+export interface Block{
+    blockId: number,
+    blockFloor:number,
+    blockCode: number,
+    createdOn: Date
+}
+export interface OnCall{
+    onCallId?:number,
+    nurse: Nurse,
+    block: Block,
+    onCallStart: Date,
+    onCallEnd:Date
+}
+export interface AddOnCall{
+    nurseId:number,
+    blockId:number,
+    onCallStart:Date,
+    onCallEnd: Date
 }

@@ -1,0 +1,38 @@
+<div style="padding: 10px 20px">
+
+    <div>
+        <button mat-button extended (click)="openBlockDialog()">
+          <mat-icon>add</mat-icon>
+          Add New Block
+        </button>
+    </div>
+
+    <div style="padding: 15px 40px">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="blockFloor">
+        <th mat-header-cell *matHeaderCellDef>Block Floor</th>
+        <td mat-cell *matCellDef="let element">{{ element.blockFloor }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="blockCode">
+        <th mat-header-cell *matHeaderCellDef>Block Code</th>
+        <td mat-cell *matCellDef="let element">{{ element.blockCode }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>Action</th>
+        <td mat-cell *matCellDef="let element">
+            <div>
+                <button mat-button (click)="openBlockDialog(element)">Edit</button>
+                <button mat-button (click)="deleteBlock(element)">Delete</button>
+            </div>
+        </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    </div>
+
+</div>

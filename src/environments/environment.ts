@@ -1,4 +1,4 @@
 export const environment = {
     apiUrl:'https://gdtc-training-api.azurewebsites.net/api/hospital',
-    token:'eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5hbnRfaWQiOiIwIiwidGVuYW50X2VtYWlsIjoicmFodWwua3VtaGFyQGdvZGlnaXRhbHRjLmNvbSIsImNyZWF0ZWRfb24iOiI4LzIwLzIwMjUgMjo1MTo0NyBQTSIsImV4cCI6MTc1NjA0NzEwN30.wt26iNjjop_4ZPsNZQTdDoQZjLVnzF8Qu_b4NNQHG_Y'
 };
+

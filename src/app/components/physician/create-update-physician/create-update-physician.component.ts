@@ -22,8 +22,6 @@ export class CreateUpdatePhysicianComponent implements OnInit{
   }
 
   ngOnInit():void{
-    console.log(this.data);
-    
     if(this.data){
       this.isEditMode = true;
       this.physicianForm.patchValue({

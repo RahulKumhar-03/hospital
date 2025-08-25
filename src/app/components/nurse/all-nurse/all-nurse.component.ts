@@ -42,7 +42,6 @@ export class AllNurseComponent implements OnInit{
         if(data.nurseId){
           this.service.updateNurseDetails(data).subscribe({
             next:(response) =>{
-              console.log(response.status);
               if(response.status){
                 alert('Nurse Details updated successfully')
                 this.loadNurseDetails();

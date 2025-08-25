@@ -4,11 +4,11 @@ import { MatButtonModule } from '@angular/material/button'
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
-  selector: 'app-nav',
+  selector: 'app-nav-bar',
   imports: [MatToolbarModule, RouterLink, RouterLinkActive, MatButtonModule],
-  templateUrl: './nav.component.html',
-  styleUrl: './nav.component.css'
+  templateUrl: './nav-bar.component.html',
+  styleUrl: './nav-bar.component.css'
 })
-export class NavComponent {
+export class NavBarComponent {
 
 }
