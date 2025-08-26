@@ -20,6 +20,11 @@
         <td mat-cell *matCellDef="let element">{{ element.roomType }}</td>
         </ng-container>
 
+        <ng-container matColumnDef="availability">
+        <th mat-header-cell *matHeaderCellDef>Room Availability</th>
+        <td mat-cell *matCellDef="let element">{{ element.availability }}</td>
+        </ng-container>
+
         <ng-container matColumnDef="blockCode">
         <th mat-header-cell *matHeaderCellDef>Block Code</th>
         <td mat-cell *matCellDef="let element">{{ element.block.blockCode }}</td>

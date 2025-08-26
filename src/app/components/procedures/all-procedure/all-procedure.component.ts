@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ProcedureService } from '../../../services/procedure/procedure.service';
+import { ProcedureService } from '../../../core/services/procedure/procedure.service';
 import { MatDialog } from '@angular/material/dialog';
-import { Procedure } from '../../../interfaces';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from "@angular/material/button";
-import { ProcedureDialogComponent } from '../procedure-dialog/procedure-dialog.component';
+import { ProcedureDialogComponent } from '../create-update-procedure-dialog/procedure-dialog.component';
 import { MatIconModule } from '@angular/material/icon';
+import { Procedure } from '../../../core/interface/procedure.interface';
 @Component({
   selector: 'app-all-procedure',
   imports: [MatTableModule, MatDialogModule, MatButtonModule, MatIconModule],
@@ -14,9 +14,9 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './all-procedure.component.css'
 })
 export class AllProcedureComponent implements OnInit {
-  procedures: Procedure[] = []
-  dataSource = new MatTableDataSource<Procedure>();
-  displayedColumns: string[] = ['name', 'cost', 'action'];
+  public procedures: Procedure[] = []
+  public dataSource = new MatTableDataSource<Procedure>();
+  public displayedColumns: string[] = ['name', 'cost', 'action'];
 
   constructor(private service: ProcedureService, private dialog: MatDialog){}
 
@@ -24,7 +24,7 @@ export class AllProcedureComponent implements OnInit {
     this.loadProcedures();
   }
 
-  loadProcedures(){
+  public loadProcedures(){
     this.service.getAllProcedures().subscribe({
       next:(response) => {
         this.procedures = response;
@@ -37,7 +37,7 @@ export class AllProcedureComponent implements OnInit {
     })
   }
 
-  openProcedureDialog(procedureData?: Procedure){
+  public openProcedureDialog(procedureData?: Procedure){
     let dialog = this.dialog.open(ProcedureDialogComponent,{
       width: '600px',
       data: procedureData
@@ -77,7 +77,7 @@ export class AllProcedureComponent implements OnInit {
     })
   }
 
-  deleteProcedure(procedureData: Procedure){
+  public deleteProcedure(procedureData: Procedure){
     this.service.deleteProcedureRecord(procedureData).subscribe({
       next: (response) => {
         if(response.status){

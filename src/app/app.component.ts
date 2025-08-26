@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavBarComponent } from "./components/shared/nav-bar/nav-bar.component";
+import { NavBarComponent } from "./shared/nav-bar/nav-bar.component";
 
 @Component({
   selector: 'app-root',
@@ -9,5 +9,5 @@ import { NavBarComponent } from "./components/shared/nav-bar/nav-bar.component";
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'hospital';
+  public title = 'hospital';
 }

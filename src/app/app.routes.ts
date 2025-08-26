@@ -22,4 +22,7 @@ export const routes: Routes = [
     {
         path: 'patient', loadComponent:()=> import('./components/patients/all-patient/all-patient.component').then(m => m.AllPatientComponent)
     },
+    {
+        path: 'appointment', loadComponent:()=> import('./components/appointments/all-appointments/all-appointments.component').then(m => m.AllAppointmentsComponent)
+    },
 ];

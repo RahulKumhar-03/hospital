@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { Patient } from '../../../interfaces';
-import { PatientService } from '../../../services/patient/patient.service';
+import { PatientService } from '../../../core/services/patient/patient.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
-import { PatientDialogComponent } from '../patient-dialog/patient-dialog.component';
+import { PatientDialogComponent } from '../create-update-patient-dialog/patient-dialog.component';
+import { Patient } from '../../../core/interface/patient.interface';
 
 @Component({
   selector: 'app-all-patient',
@@ -15,7 +15,7 @@ import { PatientDialogComponent } from '../patient-dialog/patient-dialog.compone
   styleUrl: './all-patient.component.css',
 })
 export class AllPatientComponent implements OnInit {
-  patients: Patient[] = [];
+  public patients: Patient[] = [];
 
   constructor(
     private service: PatientService,
@@ -26,7 +26,7 @@ export class AllPatientComponent implements OnInit {
   ngOnInit(): void {
     this.loadPatientRecords();
   }
-  loadPatientRecords() {
+  public loadPatientRecords() {
     this.service.getAllPatientRecords().subscribe({
       next: (res) => {
         this.patients = res;
@@ -40,7 +40,7 @@ export class AllPatientComponent implements OnInit {
     });
   }
 
-  openPatientDialog(patientData?: Patient) {
+  public openPatientDialog(patientData?: Patient) {
     let dialog = this.dialog.open(PatientDialogComponent, {
       width: '600px',
       data: patientData,
@@ -105,7 +105,7 @@ export class AllPatientComponent implements OnInit {
     });
   }
 
-  deletepatient(patient: Patient) {
+  public deletepatient(patient: Patient) {
     if(confirm('Are you sure? You wanted to delete record!')){
       this.service.deletePhysician(patient).subscribe({
         next:(response) =>{

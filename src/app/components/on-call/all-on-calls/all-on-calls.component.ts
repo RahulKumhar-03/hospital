@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { AddOnCall, OnCall } from '../../../interfaces';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { OnCallService } from '../../../services/onCall/on-call.service';
+import { OnCallService } from '../../../core/services/onCall/on-call.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { OnCallDialogComponent } from '../on-call-dialog/on-call-dialog.component';
+import { OnCallDialogComponent } from '../add-edit-on-call-dialog/on-call-dialog.component';
 import { MatButtonModule } from '@angular/material/button';
+import { OnCall } from '../../../core/interface/on-call.interface';
+import { AddOnCall } from '../../../core/interface/add-on-call.interface';
 
 @Component({
   selector: 'app-all-on-calls',
@@ -15,8 +16,8 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './all-on-calls.component.css'
 })
 export class AllOnCallsComponent implements OnInit {
-  dataSource = new MatTableDataSource<OnCall>();
-  displayedColumns: string[] = ['nurseId','nurseName','blockId','blockFloor','blockCode','onCallStart','onCallEnd','action']
+  public dataSource = new MatTableDataSource<OnCall>();
+  public displayedColumns: string[] = ['nurseId','nurseName','blockId','blockFloor','blockCode','onCallStart','onCallEnd','action']
 
   constructor(private service: OnCallService, private snackBar: MatSnackBar, private dialog: MatDialog){}
 
@@ -24,7 +25,7 @@ export class AllOnCallsComponent implements OnInit {
     this.loadOnCallDetails();
   }
 
-  loadOnCallDetails(){
+  public loadOnCallDetails(){
     this.service.getAllOnCallDetails().subscribe({
       next:(res) => {
         this.dataSource.data = res
@@ -38,7 +39,7 @@ export class AllOnCallsComponent implements OnInit {
     })
   }
 
-  openOnCallDialog(onCallData?: AddOnCall){
+  public openOnCallDialog(onCallData?: AddOnCall ){
     let dialog = this.dialog.open(OnCallDialogComponent,{
       width:'600px',
       data: onCallData
@@ -85,7 +86,7 @@ export class AllOnCallsComponent implements OnInit {
     })
   }
 
-  deleteOnCallRecord(onCallData: OnCall){
+  public deleteOnCallRecord(onCallData: OnCall){
     const deletingRecord = {
       onCallId: onCallData.onCallId,
       nurseId: onCallData.nurse.nurseId!,
