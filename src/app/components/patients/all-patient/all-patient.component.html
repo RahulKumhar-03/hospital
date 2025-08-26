@@ -1,0 +1,25 @@
+<div style="padding: 5px 20px;">
+    <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 0 20px">
+        <button mat-fab extended (click)="openPatientDialog()">
+          <mat-icon>add</mat-icon>
+          Add Patient
+        </button>
+    </div>
+    <div class="card-container">
+        @for(patient of patients; track patient.name) {
+            <mat-card class="example-card" appearance="outlined">
+                <mat-card-header>
+                    <mat-card-title>{{patient.name}}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p>{{patient.address}}</p>
+                    <p>{{patient.phone}}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button (click)="openPatientDialog(patient)">Edit</button>
+                    <button mat-button (click)="deletepatient(patient)">Delete</button>
+                </mat-card-actions>
+            </mat-card>
+        }
+    </div>
+</div>

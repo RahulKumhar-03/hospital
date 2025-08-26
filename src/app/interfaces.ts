@@ -3,21 +3,20 @@ export interface Physician {
     name: string,
     position: string,
     createdOn: Date,
-    appointments: [
-      {
-        appointmentId: number,
-        starDateTime: Date,
-        endDateTime: Date,
-        patient: {
-          patientId: number,
-          name: string,
-          address: string,
-          phone: string,
-          createdOn: Date,
-        }
-      }
-    ],
+    appointments: PhysicainAppointment[],
     trainedIn: TrainedIn[]
+}
+export interface PhysicainAppointment{
+    appointmentId: number,
+    starDateTime: Date,
+    endDateTime: Date,
+    patient: {
+        patientId: number,
+        name: string,
+        address: string,
+        phone: string,
+        createdOn: Date,
+    }
 }
 export interface Nurse{
     nurseId?: number,
@@ -49,11 +48,6 @@ export interface PhysicianCreate{
 export interface ResponseModel{
     status: boolean,
     message: string
-}
-export interface PhysicianUpdate{
-    physicianId: number,
-    name: string,
-    position: string
 }
 export interface Room{
     roomId: number,
@@ -88,4 +82,22 @@ export interface AddOnCall{
     blockId:number,
     onCallStart:Date,
     onCallEnd: Date
+}
+export interface Patient{
+    patientId?: number,
+    name:string,
+    address:string,
+    phone:string,
+    createdOn:string
+}
+export interface PatientResponseModel{
+    patientId: number,
+    status: boolean,
+    message: string,
+}
+export interface Appointment{
+
+}
+export interface AddAppointment{
+
 }

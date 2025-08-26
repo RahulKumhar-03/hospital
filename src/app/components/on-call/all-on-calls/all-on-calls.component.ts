@@ -30,7 +30,9 @@ export class AllOnCallsComponent implements OnInit {
         this.dataSource.data = res
       },
       error:(err) => {
-        alert('Error occurred while fetching onCall Details')
+        this.snackBar.open('Error while fetching onCall records!!!','Undo',{
+          duration: 3000,
+        })
         console.error('Error occurred while fetching onCall Details: ',err)
       }
     })
@@ -41,19 +43,70 @@ export class AllOnCallsComponent implements OnInit {
       width:'600px',
       data: onCallData
     })
+    dialog.afterClosed().subscribe(data => {
+      if(data){
+        if(data.onCallId){
+          this.service.updateOnCallDetails(data).subscribe({
+            next:(res) => {
+              if(res.status){
+                this.snackBar.open('OnCall Record updated successfully.','Undo',{
+                  duration: 3000,
+                })
+                this.loadOnCallDetails();
+              }
+            },
+            error:(err) => {
+              this.snackBar.open('Error while updating onCall records!!!','Undo',{
+                duration: 3000,
+              })
+              console.error('Error occurred while updating record!!!: ',err);
+            }
+          })
+        }
+        else{
+          this.service.createNewOnCallRecord(data).subscribe({
+            next:(res) => {
+              if(res.status){
+                this.snackBar.open('OnCall Record created successfully.','Undo',{
+                  duration: 3000,
+                })
+                this.loadOnCallDetails();
+              }
+            },
+            error:(err) => {
+              this.snackBar.open('Error while creating new onCall records!!!','Undo',{
+                duration: 3000,
+              })
+              console.error('Error occurred while creating record!!!: ',err);
+            }
+          })
+        }
+      }
+    })
   }
 
-  deleteOnCallRecord(onCallData: AddOnCall){
+  deleteOnCallRecord(onCallData: OnCall){
+    const deletingRecord = {
+      onCallId: onCallData.onCallId,
+      nurseId: onCallData.nurse.nurseId!,
+      blockId:onCallData.block.blockId,
+      onCallStart: onCallData.onCallStart,
+      onCallEnd: onCallData.onCallEnd,
+    }
     if(confirm('Are You Sure, you want to delete record?')){
-      this.service.deleteOnCallRecord(onCallData).subscribe({
+      this.service.deleteOnCallRecord(deletingRecord).subscribe({
         next:(res) => {
           if(res.status){
-            this.snackBar.open('OnCall Record deleted Successfully.')
+            this.snackBar.open('OnCall Record deleted Successfully.','Undo',{
+              duration: 3000,
+            })
             this.loadOnCallDetails();
           }
         },
         error:(err) => {
-          this.snackBar.open('Error while deleting record!!!');
+          this.snackBar.open('Error while deleting record!!!','Undo',{
+            duration: 3000,
+          });
           console.error('Error while deleting record: ',err);
         }
       })

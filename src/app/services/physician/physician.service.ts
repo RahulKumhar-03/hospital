@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
-import { Physician, PhysicianCreate, PhysicianUpdate, ResponseModel } from '../../interfaces';
+import { Physician, PhysicianCreate, ResponseModel } from '../../interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +24,7 @@ export class PhysicianService {
     return this.http.put<ResponseModel>(this.apiUrl, physicianData)
   }
 
-  deletePhysician(physicianData: PhysicianUpdate):Observable<ResponseModel>{
+  deletePhysician(physicianData: PhysicianCreate):Observable<ResponseModel>{
     return this.http.delete<ResponseModel>(this.apiUrl, {body: physicianData})
   }
 }
