@@ -5,7 +5,7 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatDialog, MatDialogModule } from '@angular/material/dialog'
 import { MatChipsModule } from '@angular/material/chips'
 import { PhysicianService } from '../../../core/services/physician/physician.service';
-import { CreateUpdatePhysicianComponent } from '../create-update-physician-dialog/create-update-physician-dialog.component';
+import { CreateUpdatePhysicianDialogComponent } from '../create-update-physician-dialog/create-update-physician-dialog.component';
 import { MatInput } from "@angular/material/input";
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
@@ -47,7 +47,7 @@ export class AllPhysicianComponent implements OnInit {
   }
 
   public openPhysicianDialog(physicianData?: Physician):void{
-    let dialog = this.dialog.open(CreateUpdatePhysicianComponent,{
+    let dialog = this.dialog.open(CreateUpdatePhysicianDialogComponent,{
       width:'500px',
       data: physicianData
     })

@@ -1,0 +1,53 @@
+<div style="padding: 10px 20px">
+
+    <div>
+        <button mat-button extended (click)="openMedicationDialog()">
+          <mat-icon>add</mat-icon>
+          Add Medication
+        </button>
+    </div>
+
+    <div style="padding: 15px 40px">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="medicationId">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.medicationId }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="medicationName">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="medicationBrand">
+        <th mat-header-cell *matHeaderCellDef>Brand</th>
+        <td mat-cell *matCellDef="let element">{{ element.brand }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="medicationDescription">
+        <th mat-header-cell *matHeaderCellDef>Description</th>
+        <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="createdDate">
+        <th mat-header-cell *matHeaderCellDef>Creation Date</th>
+        <td mat-cell *matCellDef="let element">{{ element.createdDate }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>Action</th>
+        <td mat-cell *matCellDef="let element">
+            <div>
+                <button mat-button (click)="openMedicationDialog(element)">Edit</button>
+                <button mat-button (click)="deleteMedication(element)">Delete</button>
+            </div>
+        </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    </div>
+
+</div>

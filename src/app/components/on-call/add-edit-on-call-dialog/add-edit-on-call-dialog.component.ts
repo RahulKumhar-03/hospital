@@ -21,13 +21,13 @@ import { OnCall } from '../../../core/interface/on-call.interface';
   templateUrl: './add-edit-on-call-dialog.component.html',
   styleUrl: './add-edit-on-call-dialog.component.css'
 })
-export class OnCallDialogComponent implements OnInit {
+export class AddEditOnCallDialogComponent implements OnInit {
   public isEditting: boolean = false
   public blockData: Block[] = []
   public nurseData: Nurse[] = []
 
   public onCallForm : FormGroup
-  constructor(private fb: FormBuilder, private nurseService: NurseService, private blockService: BlockService, private snackBar: MatSnackBar, private dialogRef: MatDialogRef<OnCallDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: OnCall){
+  constructor(private fb: FormBuilder, private nurseService: NurseService, private blockService: BlockService, private snackBar: MatSnackBar, private dialogRef: MatDialogRef<AddEditOnCallDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: OnCall){
     this.onCallForm = this.fb.group({
       nurseId: [null,Validators.required],
       blockId:[null,Validators.required],

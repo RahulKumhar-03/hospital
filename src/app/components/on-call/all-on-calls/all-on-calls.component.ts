@@ -4,7 +4,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { OnCallService } from '../../../core/services/onCall/on-call.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { OnCallDialogComponent } from '../add-edit-on-call-dialog/add-edit-on-call-dialog.component';
+import { AddEditOnCallDialogComponent } from '../add-edit-on-call-dialog/add-edit-on-call-dialog.component';
 import { MatButtonModule } from '@angular/material/button';
 import { OnCall } from '../../../core/interface/on-call.interface';
 import { AddOnCall } from '../../../core/interface/add-on-call.interface';
@@ -40,7 +40,7 @@ export class AllOnCallsComponent implements OnInit {
   }
 
   public openOnCallDialog(onCallData?: AddOnCall ){
-    let dialog = this.dialog.open(OnCallDialogComponent,{
+    let dialog = this.dialog.open(AddEditOnCallDialogComponent,{
       width:'600px',
       data: onCallData
     })

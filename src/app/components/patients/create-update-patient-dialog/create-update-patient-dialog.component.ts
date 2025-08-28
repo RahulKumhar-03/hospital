@@ -12,10 +12,10 @@ import { Patient } from '../../../core/interface/patient.interface';
   templateUrl: './create-update-patient-dialog.component.html',
   styleUrl: './create-update-patient-dialog.component.css'
 })
-export class PatientDialogComponent {
+export class CreateUpdatePatientDialogComponent {
   public isEditMode:boolean = false;
   public patientForm : FormGroup;
-  constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<PatientDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: Patient){
+  constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<CreateUpdatePatientDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: Patient){
     this.patientForm = this.fb.group({
       name: ['', Validators.required],
       address:['', Validators.required],

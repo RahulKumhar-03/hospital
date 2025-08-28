@@ -23,7 +23,7 @@ import { Appointment } from '../../../core/interface/appointment.interface';
   templateUrl: './add-edit-appointment-dialog.component.html',
   styleUrl: './add-edit-appointment-dialog.component.css',
 })
-export class AppointmentDialogComponent implements OnInit {
+export class AddEditAppointmentDialogComponent implements OnInit {
   public isEditting: boolean = false
   public patientData: Patient[] = [];
   public onCallData: OnCall[] = [];
@@ -33,7 +33,7 @@ export class AppointmentDialogComponent implements OnInit {
 
   constructor(
     private fb:FormBuilder,
-    private dialogRef: MatDialogRef<AppointmentDialogComponent>,
+    private dialogRef: MatDialogRef<AddEditAppointmentDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Appointment,
     private onCallService: OnCallService,
     private physicianService: PhysicianService,

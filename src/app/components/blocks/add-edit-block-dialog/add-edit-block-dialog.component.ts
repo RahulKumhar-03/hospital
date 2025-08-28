@@ -12,10 +12,12 @@ import { Block } from '../../../core/interface/block.interface';
   templateUrl: './add-edit-block-dialog.component.html',
   styleUrl: './add-edit-block-dialog.component.css',
 })
-export class BlockDialogComponent {
-  public isEditMode: boolean = false;
+export class AddEditBlockDialogComponent {
+  
   public blockForm: FormGroup;
-  constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<BlockDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: Block){
+  public isEditMode: boolean = false;
+
+  constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<AddEditBlockDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: Block){
     this.blockForm = this.fb.group({
       blockFloor: [null,Validators.required],
       blockCode:[null,Validators.required],

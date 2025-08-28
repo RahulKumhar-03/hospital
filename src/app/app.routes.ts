@@ -25,4 +25,10 @@ export const routes: Routes = [
     {
         path: 'appointment', loadComponent:()=> import('./components/appointments/all-appointments/all-appointments.component').then(m => m.AllAppointmentsComponent)
     },
+    {
+        path: 'medication', loadComponent:()=> import('./components/medications/all-mediactions/all-mediactions.component').then(m => m.AllMediactionsComponent)
+    },
+    {
+        path: 'prescription', loadComponent:()=> import('./components/prescriptions/all-prescription/all-prescription.component').then(m => m.AllPrescriptionComponent)
+    },
 ];

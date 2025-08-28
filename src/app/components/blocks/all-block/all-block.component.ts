@@ -6,7 +6,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar'
 import { MatButtonModule } from '@angular/material/button';
 import { BlockService } from '../../../core/services/blocks/block.service';
 import { Block } from '../../../core/interface/block.interface';
-import { BlockDialogComponent } from '../add-edit-block-dialog/add-edit-block-dialog.component';
+import { AddEditBlockDialogComponent } from '../add-edit-block-dialog/add-edit-block-dialog.component';
 
 @Component({
   selector: 'app-all-block',
@@ -15,6 +15,7 @@ import { BlockDialogComponent } from '../add-edit-block-dialog/add-edit-block-di
   styleUrl: './all-block.component.css'
 })
 export class AllBlockComponent {
+  
   public dataSource = new MatTableDataSource<Block>();
   public displayedColumns: string[] = ['blockCode','blockFloor','action'];
 
@@ -37,7 +38,7 @@ export class AllBlockComponent {
   }
 
   public openBlockDialog(blockData?: Block){
-    let dialog = this.dialog.open(BlockDialogComponent,{
+    let dialog = this.dialog.open(AddEditBlockDialogComponent,{
       width:'600px',
       data: blockData
     })

@@ -5,7 +5,7 @@ import { RoomService } from '../../../core/services/rooms/room.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar'
 import { MatButtonModule } from '@angular/material/button';
-import { RoomDialogComponent } from '../add-edit-room-dialog/add-edit-room-dialog.component';
+import { AddEditRoomDialogComponent } from '../add-edit-room-dialog/add-edit-room-dialog.component';
 import { Room } from '../../../core/interface/room.interface';
 import { AddRoom } from '../../../core/interface/add-room.interface';
 
@@ -38,7 +38,7 @@ export class AllRoomsComponent implements OnInit {
   }
 
   public openRoomDialog(roomData?: AddRoom){
-    let dialog = this.dialog.open(RoomDialogComponent,{
+    let dialog = this.dialog.open(AddEditRoomDialogComponent,{
       width:'600px',
       data: roomData
     })

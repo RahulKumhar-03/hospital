@@ -12,11 +12,11 @@ import { Nurse } from '../../../core/interface/nurse.interface';
   templateUrl: './create-update-nurse-dialog.component.html',
   styleUrl: './create-update-nurse-dialog.component.css'
 })
-export class CreateUpdateNurseComponent implements OnInit {
+export class CreateUpdateNurseDialogComponent implements OnInit {
   public isEditMode: boolean = false;
   public nurseForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<CreateUpdateNurseComponent>, @Inject(MAT_DIALOG_DATA) public data: Nurse){
+  constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<CreateUpdateNurseDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: Nurse){
     this.nurseForm = this.fb.group({
       name: ['',Validators.required],
       position:['',Validators.required],

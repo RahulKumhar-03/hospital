@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from "@angular/material/button";
-import { ProcedureDialogComponent } from '../create-update-procedure-dialog/create-update-procedure-dialog.component';
+import { CreateUpdateProcedureDialogComponent } from '../create-update-procedure-dialog/create-update-procedure-dialog.component';
 import { MatIconModule } from '@angular/material/icon';
 import { Procedure } from '../../../core/interface/procedure.interface';
 @Component({
@@ -38,7 +38,7 @@ export class AllProcedureComponent implements OnInit {
   }
 
   public openProcedureDialog(procedureData?: Procedure){
-    let dialog = this.dialog.open(ProcedureDialogComponent,{
+    let dialog = this.dialog.open(CreateUpdateProcedureDialogComponent,{
       width: '600px',
       data: procedureData
     })

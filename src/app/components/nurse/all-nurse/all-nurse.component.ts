@@ -4,7 +4,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { CreateUpdateNurseComponent } from '../create-update-nurse-dialog/create-update-nurse-dialog.component';
+import { CreateUpdateNurseDialogComponent } from '../create-update-nurse-dialog/create-update-nurse-dialog.component';
 import { Nurse } from '../../../core/interface/nurse.interface';
 
 @Component({
@@ -33,7 +33,7 @@ export class AllNurseComponent implements OnInit{
   }
 
   public openNurseDialog(nurseData?: Nurse){
-    const dialog = this.dialog.open(CreateUpdateNurseComponent,{
+    const dialog = this.dialog.open(CreateUpdateNurseDialogComponent,{
       width:'500px',
       data: nurseData
     })

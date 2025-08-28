@@ -17,13 +17,13 @@ import { Room } from '../../../core/interface/room.interface';
   templateUrl: './add-edit-room-dialog.component.html',
   styleUrl: './add-edit-room-dialog.component.css'
 })
-export class RoomDialogComponent implements OnInit {
+export class AddEditRoomDialogComponent implements OnInit {
   public isEditMode: boolean = false
   public blockData: Block[] = []
   public blockService = inject(BlockService)
   public roomForm: FormGroup
 
-  constructor(private dailogRef: MatDialogRef<RoomDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: Room, private fb: FormBuilder, private snackBar: MatSnackBar){
+  constructor(private dailogRef: MatDialogRef<AddEditRoomDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: Room, private fb: FormBuilder, private snackBar: MatSnackBar){
     this.roomForm = this.fb.group({
       roomNumber:[0,Validators.required],
       blockId: [null, Validators.required],

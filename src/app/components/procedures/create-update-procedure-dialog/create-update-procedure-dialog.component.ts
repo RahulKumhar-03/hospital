@@ -12,11 +12,11 @@ import { Procedure } from '../../../core/interface/procedure.interface';
   templateUrl: './create-update-procedure-dialog.component.html',
   styleUrl: './create-update-procedure-dialog.component.css'
 })
-export class ProcedureDialogComponent implements OnInit {
+export class CreateUpdateProcedureDialogComponent implements OnInit {
   public procedureForm: FormGroup
   public isEditMode: boolean = false
 
-  constructor(private dialogRef: MatDialogRef<ProcedureDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: Procedure, private fb: FormBuilder){
+  constructor(private dialogRef: MatDialogRef<CreateUpdateProcedureDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: Procedure, private fb: FormBuilder){
     this.procedureForm = this.fb.group({
       name: ['', Validators.required],
       cost:[10000, Validators.required]

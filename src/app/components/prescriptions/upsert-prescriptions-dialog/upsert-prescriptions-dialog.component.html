@@ -1,0 +1,63 @@
+<div style="justify-items: center;">
+    <h2 style="padding-top: 5px;">{{isEditting ? 'Update Medication Details' : 'Add New Medication'}}</h2>
+  <form [formGroup]="prescribedForm" (submit)="submitForm()" style="display: flex; flex-direction: column; margin: auto; width: 80%; padding: 30px 0;">
+    
+    <mat-form-field>
+      <mat-label>Patient ID</mat-label>
+      <mat-select formControlName="patientId">
+        @for(patient of patients; track patient.name){
+            <mat-option [value]="patient.patientId">{{patient.patientId}} - {{patient.name}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field>
+        <mat-label>Appointment ID</mat-label>
+        <mat-select formControlName="appointmentId">
+            @for(appointment of appointments; track appointment.appointmentId){
+                <mat-option [value]="appointment.appointmentId">{{appointment.appointmentId}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Physician ID</mat-label>
+      <mat-select formControlName="physicianId">
+        @for(physician of physicians; track physician.name){
+            <mat-option [value]="physician.physicianId">{{physician.physicianId}} - {{physician.name}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Medication ID</mat-label>
+      <mat-select formControlName="medicationId">
+        @for(medication of medications; track medication.name){
+            <mat-option [value]="medication.medicationId">{{medication.medicationId}} - {{medication.name}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Dose</mat-label>
+        <input matInput placeholder="Eg. 3 times a day" formControlName="dose">
+    </mat-form-field>
+
+    <mat-form-field>
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="date">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+    <div>
+        <button mat-button [disabled]="prescribedForm.invalid" type="submit">
+            Submit
+        </button>
+        <button mat-button (click)="onClose()">
+            Cancel
+        </button>
+    </div>
+  </form>
+</div>

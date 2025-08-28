@@ -7,7 +7,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Appointment } from '../../../core/interface/appointment.interface';
 import { AddAppointment } from '../../../core/interface/add-appointment.interface';
-import { AppointmentDialogComponent } from '../add-edit-appointment-dialog/add-edit-appointment-dialog.component';
+import { AddEditAppointmentDialogComponent } from '../add-edit-appointment-dialog/add-edit-appointment-dialog.component';
 
 @Component({
   selector: 'app-all-appointments',
@@ -40,7 +40,7 @@ export class AllAppointmentsComponent {
   }
 
   public openAppointmentDialog(appointmentData?: AddAppointment){
-    let dialog = this.dialog.open(AppointmentDialogComponent,{
+    let dialog = this.dialog.open(AddEditAppointmentDialogComponent,{
       width:'600px',
       data: appointmentData
     })

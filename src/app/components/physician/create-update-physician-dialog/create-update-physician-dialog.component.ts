@@ -11,10 +11,10 @@ import { PhysicianCreate } from '../../../core/interface/physician-create.interf
   templateUrl: './create-update-physician-dialog.component.html',
   styleUrl: './create-update-physician-dialog.component.css'
 })
-export class CreateUpdatePhysicianComponent implements OnInit{
+export class CreateUpdatePhysicianDialogComponent implements OnInit{
   public isEditMode:boolean = false;
   public physicianForm : FormGroup;
-  constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<CreateUpdatePhysicianComponent>, @Inject(MAT_DIALOG_DATA) public data: PhysicianCreate){
+  constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<CreateUpdatePhysicianDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: PhysicianCreate){
     this.physicianForm = this.fb.group({
       name: ['', Validators.required],
       position:['', Validators.required]

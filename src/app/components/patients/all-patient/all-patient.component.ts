@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { PatientService } from '../../../core/services/patient/patient.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
-import { PatientDialogComponent } from '../create-update-patient-dialog/create-update-patient-dialog.component';
+import { CreateUpdatePatientDialogComponent } from '../create-update-patient-dialog/create-update-patient-dialog.component';
 import { Patient } from '../../../core/interface/patient.interface';
 
 @Component({
@@ -41,7 +41,7 @@ export class AllPatientComponent implements OnInit {
   }
 
   public openPatientDialog(patientData?: Patient) {
-    let dialog = this.dialog.open(PatientDialogComponent, {
+    let dialog = this.dialog.open(CreateUpdatePatientDialogComponent, {
       width: '600px',
       data: patientData,
     });
