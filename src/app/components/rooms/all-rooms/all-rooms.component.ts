@@ -5,7 +5,7 @@ import { RoomService } from '../../../core/services/rooms/room.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar'
 import { MatButtonModule } from '@angular/material/button';
-import { RoomDialogComponent } from '../add-edit-room-dialog/room-dialog.component';
+import { RoomDialogComponent } from '../add-edit-room-dialog/add-edit-room-dialog.component';
 import { Room } from '../../../core/interface/room.interface';
 import { AddRoom } from '../../../core/interface/add-room.interface';
 
@@ -26,7 +26,7 @@ export class AllRoomsComponent implements OnInit {
   }
 
   public loadRoomDetails(){
-    this.service.getAllRoomDetails().subscribe({
+    this.service.getRooms().subscribe({
       next: (res) => {
         this.dataSource.data = res;
       },
@@ -46,7 +46,7 @@ export class AllRoomsComponent implements OnInit {
     dialog.afterClosed().subscribe(data => {
       if(data){
         if(data.roomId){
-          this.service.updateRoomDetail(data).subscribe({
+          this.service.updateRoom(data).subscribe({
             next:(res) => {
               if(res.status){
                 this.snackBar.open('Room Details Updated Successfully.','Undo',{
@@ -64,7 +64,7 @@ export class AllRoomsComponent implements OnInit {
           })
         }
         else {
-          this.service.createNewRoomRecord(data).subscribe({
+          this.service.createRoom(data).subscribe({
             next:(res) => {
               if(res.status){
                 this.snackBar.open('Added New Room Record.','Undo',{
@@ -94,7 +94,7 @@ export class AllRoomsComponent implements OnInit {
       availability: roomData.availability,
     } as AddRoom
     if(confirm('Are You Sure you wnat to delete this record?')){
-      this.service.deleteRoomRecord(deletingRoom).subscribe({
+      this.service.deleteRoom(deletingRoom).subscribe({
         next:(res) => {
           if(res.status){
             this.snackBar.open('Record Deleted Successfully.','Undo',{

@@ -8,8 +8,8 @@ import { PhysicianCreate } from '../../../core/interface/physician-create.interf
 @Component({
   selector: 'app-create-update-physician',
   imports: [MatFormFieldModule, MatInputModule,MatButtonModule, ReactiveFormsModule],
-  templateUrl: './create-update-physician.component.html',
-  styleUrl: './create-update-physician.component.css'
+  templateUrl: './create-update-physician-dialog.component.html',
+  styleUrl: './create-update-physician-dialog.component.css'
 })
 export class CreateUpdatePhysicianComponent implements OnInit{
   public isEditMode:boolean = false;

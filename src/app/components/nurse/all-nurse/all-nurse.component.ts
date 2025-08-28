@@ -4,7 +4,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { CreateUpdateNurseComponent } from '../create-update-nurse-dialog/create-update-nurse.component';
+import { CreateUpdateNurseComponent } from '../create-update-nurse-dialog/create-update-nurse-dialog.component';
 import { Nurse } from '../../../core/interface/nurse.interface';
 
 @Component({
@@ -21,7 +21,7 @@ export class AllNurseComponent implements OnInit{
     this.loadNurseDetails();
   }
   public loadNurseDetails():void{
-    this.service.getAllNurseDetails().subscribe({
+    this.service.getNurses().subscribe({
       next:(response) =>{
         this.nurses = response;
       },
@@ -40,7 +40,7 @@ export class AllNurseComponent implements OnInit{
     dialog.afterClosed().subscribe(data => {
       if(data){
         if(data.nurseId){
-          this.service.updateNurseDetails(data).subscribe({
+          this.service.updateNurse(data).subscribe({
             next:(response) =>{
               if(response.status){
                 alert('Nurse Details updated successfully')
@@ -53,7 +53,7 @@ export class AllNurseComponent implements OnInit{
             }
           })
         } else {
-          this.service.createNewNurse(data).subscribe({
+          this.service.createNurse(data).subscribe({
             next: (response) => {
               if(response.status){
                 alert('New Nurse Added successfully');
@@ -72,7 +72,7 @@ export class AllNurseComponent implements OnInit{
 
   public deleteNurseRecord(nurseData: Nurse){
     if(confirm('Are you sure? You wanted to delete record!')){
-      this.service.deleteNurseRecord(nurseData).subscribe({
+      this.service.deleteNurse(nurseData).subscribe({
         next:(response) => {
           if(response.status){
             alert('Nurse Record deleted successfully');

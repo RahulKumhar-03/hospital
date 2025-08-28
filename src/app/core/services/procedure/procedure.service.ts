@@ -13,19 +13,19 @@ export class ProcedureService {
 
   constructor(private http: HttpClient) { }
 
-  public getAllProcedures():Observable<Procedure[]>{
+  public getProcedures():Observable<Procedure[]>{
     return this.http.get<Procedure[]>(this.apiUrl);
   }
 
-  public updateProcedureRecord(updatedProcedureData:Procedure):Observable<ResponseModel>{
+  public updateProcedure(updatedProcedureData:Procedure):Observable<ResponseModel>{
     return this.http.put<ResponseModel>(this.apiUrl, updatedProcedureData);
   }
 
-  public createNewProcedureRecord(newProcedureRecord: Procedure): Observable<ResponseModel>{
+  public createProcedure(newProcedureRecord: Procedure): Observable<ResponseModel>{
     return this.http.post<ResponseModel>(this.apiUrl, newProcedureRecord);
   }
 
-  public deleteProcedureRecord(procedureData: Procedure):Observable<ResponseModel>{
+  public deleteProcedure(procedureData: Procedure):Observable<ResponseModel>{
     return this.http.delete<ResponseModel>(this.apiUrl,{ body: procedureData });
   }
 }

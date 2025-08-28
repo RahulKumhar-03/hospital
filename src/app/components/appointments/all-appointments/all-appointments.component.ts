@@ -5,9 +5,9 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { AppointmentService } from '../../../core/services/appointments/appointment.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { AppointmentDialogComponent } from '../add-edit-appointment-dialog/appointment-dialog.component';
 import { Appointment } from '../../../core/interface/appointment.interface';
 import { AddAppointment } from '../../../core/interface/add-appointment.interface';
+import { AppointmentDialogComponent } from '../add-edit-appointment-dialog/add-edit-appointment-dialog.component';
 
 @Component({
   selector: 'app-all-appointments',
@@ -26,7 +26,7 @@ export class AllAppointmentsComponent {
   }
 
   public loadAppointmentsDetails(){
-    this.service.getAllAppointmentDetails().subscribe({
+    this.service.getAppointments().subscribe({
       next:(res) => {
         this.dataSource.data = res
       },
@@ -47,7 +47,7 @@ export class AllAppointmentsComponent {
     dialog.afterClosed().subscribe(data => {
       if(data){
         if(data.appointmentId){
-          this.service.updateAppointmentDetails(data).subscribe({
+          this.service.updateAppointment(data).subscribe({
             next:(res) => {
               if(res.status){
                 this.snackBar.open('Appointment Record updated successfully.','Undo',{
@@ -65,7 +65,7 @@ export class AllAppointmentsComponent {
           })
         }
         else{
-          this.service.createNewAppointmentRecord(data).subscribe({
+          this.service.createAppointment(data).subscribe({
             next:(res) => {
               if(res.status){
                 this.snackBar.open('Appointment Record created successfully.','Undo',{
@@ -98,7 +98,7 @@ export class AllAppointmentsComponent {
     console.log(deletingRecord);
     
     if(confirm('Are You Sure, you want to delete record?')){
-      this.service.deleteAppointmentRecord(deletingRecord).subscribe({
+      this.service.deleteAppointment(deletingRecord).subscribe({
         next:(res) => {
           if(res.status){
             this.snackBar.open('Appointment Record deleted Successfully.','Undo',{

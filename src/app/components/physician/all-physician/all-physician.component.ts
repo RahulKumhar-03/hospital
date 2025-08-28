@@ -5,7 +5,7 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatDialog, MatDialogModule } from '@angular/material/dialog'
 import { MatChipsModule } from '@angular/material/chips'
 import { PhysicianService } from '../../../core/services/physician/physician.service';
-import { CreateUpdatePhysicianComponent } from '../create-update-physician-dialog/create-update-physician.component';
+import { CreateUpdatePhysicianComponent } from '../create-update-physician-dialog/create-update-physician-dialog.component';
 import { MatInput } from "@angular/material/input";
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
@@ -28,7 +28,7 @@ export class AllPhysicianComponent implements OnInit {
     this.loadAllPhysicians();
   }
   public loadAllPhysicians(){
-    this.service.getAllPhysicians().subscribe({
+    this.service.getPhysicians().subscribe({
       next:(response) => {
         this.physicians = response,
         this.filteredPhysicians = response
@@ -54,7 +54,7 @@ export class AllPhysicianComponent implements OnInit {
     dialog.afterClosed().subscribe(data => {
       if(data){
         if(data.physicianId){
-          this.service.updatePhysicianDetails(data).subscribe({
+          this.service.updatePhysician(data).subscribe({
             next:(response) =>{
               if(response.status){
                 alert('Physician Details updated successfully')
@@ -67,7 +67,7 @@ export class AllPhysicianComponent implements OnInit {
             }
           })
         } else {
-          this.service.createNewPhysician(data).subscribe({
+          this.service.createPhysician(data).subscribe({
             next: (response) => {
               if(response.status){
                 alert('New Physician Added successfully');
@@ -101,7 +101,7 @@ export class AllPhysicianComponent implements OnInit {
   }
 
   public physicianFullDetails(physicianId: number){
-    this.service.getDetialsById(physicianId).subscribe({
+    this.service.getPhysicianById(physicianId).subscribe({
     })
   }
 }

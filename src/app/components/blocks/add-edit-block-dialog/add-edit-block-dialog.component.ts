@@ -9,16 +9,16 @@ import { Block } from '../../../core/interface/block.interface';
 @Component({
   selector: 'app-block-dialog',
   imports: [MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatButtonModule],
-  templateUrl: './block-dialog.component.html',
-  styleUrl: './block-dialog.component.css'
+  templateUrl: './add-edit-block-dialog.component.html',
+  styleUrl: './add-edit-block-dialog.component.css',
 })
 export class BlockDialogComponent {
   public isEditMode: boolean = false;
   public blockForm: FormGroup;
   constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<BlockDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: Block){
     this.blockForm = this.fb.group({
-      blockFloor: [0,Validators.required],
-      blockCode:[0,Validators.required],
+      blockFloor: [null,Validators.required],
+      blockCode:[null,Validators.required],
     })
   }
   ngOnInit():void{

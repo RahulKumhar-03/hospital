@@ -20,8 +20,8 @@ import { Appointment } from '../../../core/interface/appointment.interface';
   selector: 'app-appointment-dialog',
   providers: [provideNativeDateAdapter()],
   imports: [MatDatepickerModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatSelectModule, ReactiveFormsModule, MatSnackBarModule],
-  templateUrl: './appointment-dialog.component.html',
-  styleUrl: './appointment-dialog.component.css'
+  templateUrl: './add-edit-appointment-dialog.component.html',
+  styleUrl: './add-edit-appointment-dialog.component.css',
 })
 export class AppointmentDialogComponent implements OnInit {
   public isEditting: boolean = false
@@ -53,8 +53,10 @@ export class AppointmentDialogComponent implements OnInit {
     this.loadOnCallData();
     this.loadPatientData();
     this.loadPhysicianData();
+
     if(this.data){
       this.isEditting = true;
+      
       this.appointmentForm.patchValue({
         patientId: this.data.patient.patientId,
         physicianId: this.data.physician.physicianId,
@@ -66,7 +68,7 @@ export class AppointmentDialogComponent implements OnInit {
   }
 
   public loadOnCallData(){
-    this.onCallService.getAllOnCallDetails().subscribe({
+    this.onCallService.getOnCalls().subscribe({
       next:(res) => this.onCallData = res,
       error:(err) => {
         this.snackBar.open('Error while fetching onCall Records!!!','Undo',{
@@ -78,7 +80,7 @@ export class AppointmentDialogComponent implements OnInit {
   }
 
   public loadPatientData(){
-    this.patientService.getAllPatientRecords().subscribe({
+    this.patientService.getPatient().subscribe({
       next:(res) => this.patientData = res,
       error:(err) => {
         this.snackBar.open('Error while fetching patient Records!!!','Undo',{
@@ -90,7 +92,7 @@ export class AppointmentDialogComponent implements OnInit {
   }
 
   public loadPhysicianData(){
-    this.physicianService.getAllPhysicians().subscribe({
+    this.physicianService.getPhysicians().subscribe({
       next:(res) => this.physicianData = res,
       error:(err) => {
         this.snackBar.open('Error while fetching physician Records!!!','Undo',{

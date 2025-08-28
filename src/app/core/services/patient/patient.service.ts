@@ -14,19 +14,19 @@ export class PatientService {
   
   constructor(private http: HttpClient) {}
 
-  public getAllPatientRecords(): Observable<Patient[]> {
+  public getPatient(): Observable<Patient[]> {
     return this.http.get<Patient[]>(this.apiUrl)
   }
 
-  public createNewPatient(newPatientData: Patient): Observable<PatientResponseModel>{
+  public createPatient(newPatientData: Patient): Observable<PatientResponseModel>{
     return this.http.post<PatientResponseModel>(this.apiUrl, newPatientData)
   }
 
-  public updatePatientDetails(updatedPatientData: Patient):Observable<PatientResponseModel>{
+  public updatePatient(updatedPatientData: Patient):Observable<PatientResponseModel>{
     return this.http.put<PatientResponseModel>(this.apiUrl, updatedPatientData)
   }
 
-  public deletePhysician(patientData: Patient):Observable<ResponseModel>{
+  public deletePatient(patientData: Patient):Observable<ResponseModel>{
     return this.http.delete<ResponseModel>(this.apiUrl, {body: patientData})
   }
 }

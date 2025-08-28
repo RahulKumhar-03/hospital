@@ -14,8 +14,8 @@ import { Room } from '../../../core/interface/room.interface';
 @Component({
   selector: 'app-room-dialog',
   imports: [MatSlideToggleModule,MatFormFieldModule, ReactiveFormsModule, MatSelectModule, MatInputModule, MatButtonModule, MatSnackBarModule],
-  templateUrl: './room-dialog.component.html',
-  styleUrl: './room-dialog.component.css'
+  templateUrl: './add-edit-room-dialog.component.html',
+  styleUrl: './add-edit-room-dialog.component.css'
 })
 export class RoomDialogComponent implements OnInit {
   public isEditMode: boolean = false
@@ -33,7 +33,7 @@ export class RoomDialogComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.blockService.getAllBlockDetails().subscribe({
+    this.blockService.getBlocks().subscribe({
       next:(res) =>{
         this.blockData = res;
       },

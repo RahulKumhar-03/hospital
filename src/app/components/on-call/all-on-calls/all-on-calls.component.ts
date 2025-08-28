@@ -4,7 +4,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { OnCallService } from '../../../core/services/onCall/on-call.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { OnCallDialogComponent } from '../add-edit-on-call-dialog/on-call-dialog.component';
+import { OnCallDialogComponent } from '../add-edit-on-call-dialog/add-edit-on-call-dialog.component';
 import { MatButtonModule } from '@angular/material/button';
 import { OnCall } from '../../../core/interface/on-call.interface';
 import { AddOnCall } from '../../../core/interface/add-on-call.interface';
@@ -26,7 +26,7 @@ export class AllOnCallsComponent implements OnInit {
   }
 
   public loadOnCallDetails(){
-    this.service.getAllOnCallDetails().subscribe({
+    this.service.getOnCalls().subscribe({
       next:(res) => {
         this.dataSource.data = res
       },
@@ -47,7 +47,7 @@ export class AllOnCallsComponent implements OnInit {
     dialog.afterClosed().subscribe(data => {
       if(data){
         if(data.onCallId){
-          this.service.updateOnCallDetails(data).subscribe({
+          this.service.updateOnCall(data).subscribe({
             next:(res) => {
               if(res.status){
                 this.snackBar.open('OnCall Record updated successfully.','Undo',{
@@ -65,7 +65,7 @@ export class AllOnCallsComponent implements OnInit {
           })
         }
         else{
-          this.service.createNewOnCallRecord(data).subscribe({
+          this.service.createOnCall(data).subscribe({
             next:(res) => {
               if(res.status){
                 this.snackBar.open('OnCall Record created successfully.','Undo',{
@@ -95,7 +95,7 @@ export class AllOnCallsComponent implements OnInit {
       onCallEnd: onCallData.onCallEnd,
     }
     if(confirm('Are You Sure, you want to delete record?')){
-      this.service.deleteOnCallRecord(deletingRecord).subscribe({
+      this.service.deleteOnCall(deletingRecord).subscribe({
         next:(res) => {
           if(res.status){
             this.snackBar.open('OnCall Record deleted Successfully.','Undo',{

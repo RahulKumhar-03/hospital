@@ -9,8 +9,8 @@ import { Patient } from '../../../core/interface/patient.interface';
 @Component({
   selector: 'app-patient-dialog',
   imports: [MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatButtonModule],
-  templateUrl: './patient-dialog.component.html',
-  styleUrl: './patient-dialog.component.css'
+  templateUrl: './create-update-patient-dialog.component.html',
+  styleUrl: './create-update-patient-dialog.component.css'
 })
 export class PatientDialogComponent {
   public isEditMode:boolean = false;

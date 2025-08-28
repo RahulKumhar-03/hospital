@@ -14,19 +14,19 @@ export class AppointmentService {
   
   constructor(private http: HttpClient) {}
 
-  public getAllAppointmentDetails(): Observable<Appointment[]> {
+  public getAppointments(): Observable<Appointment[]> {
     return this.http.get<Appointment[]>(this.apiUrl)
   }
 
-  public createNewAppointmentRecord(newAppointmentData: AddAppointment): Observable<ResponseModel>{
+  public createAppointment(newAppointmentData: AddAppointment): Observable<ResponseModel>{
     return this.http.post<ResponseModel>(this.apiUrl, newAppointmentData)
   }
 
-  public updateAppointmentDetails(updatedAppointmentData: AddAppointment):Observable<ResponseModel>{
+  public updateAppointment(updatedAppointmentData: AddAppointment):Observable<ResponseModel>{
     return this.http.put<ResponseModel>(this.apiUrl, updatedAppointmentData)
   }
 
-  public deleteAppointmentRecord(appointmentData: AddAppointment):Observable<ResponseModel>{
+  public deleteAppointment(appointmentData: AddAppointment):Observable<ResponseModel>{
     return this.http.delete<ResponseModel>(this.apiUrl, {body: appointmentData})
   }
 }

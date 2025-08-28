@@ -9,8 +9,8 @@ import { Nurse } from '../../../core/interface/nurse.interface';
 @Component({
   selector: 'app-create-update-nurse',
   imports: [MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatButtonModule],
-  templateUrl: './create-update-nurse.component.html',
-  styleUrl: './create-update-nurse.component.css'
+  templateUrl: './create-update-nurse-dialog.component.html',
+  styleUrl: './create-update-nurse-dialog.component.css'
 })
 export class CreateUpdateNurseComponent implements OnInit {
   public isEditMode: boolean = false;

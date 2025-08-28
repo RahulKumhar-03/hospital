@@ -13,19 +13,19 @@ export class BlockService {
 
   constructor(private http: HttpClient) { }
 
-  public getAllBlockDetails():Observable<Block[]>{
+  public getBlocks():Observable<Block[]>{
     return this.http.get<Block[]>(this.apiUrl);
   }
 
-  public createNewBlockRecord(blockData: Block):Observable<ResponseModel>{
+  public createBlock(blockData: Block):Observable<ResponseModel>{
     return this.http.post<ResponseModel>(this.apiUrl, blockData)
   }
 
-  public updateBlockDetail(blockData: Block):Observable<ResponseModel>{
+  public updateBlock(blockData: Block):Observable<ResponseModel>{
     return this.http.put<ResponseModel>(this.apiUrl, blockData);
   }
 
-  public deleteBlockRecord(blockData: Block):Observable<ResponseModel>{
+  public deleteBlock(blockData: Block):Observable<ResponseModel>{
     return this.http.delete<ResponseModel>(this.apiUrl,{ body: blockData })
   }
 }

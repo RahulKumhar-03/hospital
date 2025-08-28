@@ -14,19 +14,19 @@ export class RoomService {
 
   constructor(private http: HttpClient) { }
 
-  public getAllRoomDetails():Observable<Room[]>{
+  public getRooms():Observable<Room[]>{
     return this.http.get<Room[]>(this.apiUrl);
   }
 
-  public createNewRoomRecord(roomData: AddRoom):Observable<ResponseModel>{
-    return this.http.post<ResponseModel>(this.apiUrl, roomData)
+  public createRoom(newRoomData: AddRoom):Observable<ResponseModel>{
+    return this.http.post<ResponseModel>(this.apiUrl, newRoomData)
   }
 
-  public updateRoomDetail(roomData: AddRoom):Observable<ResponseModel>{
-    return this.http.put<ResponseModel>(this.apiUrl, roomData);
+  public updateRoom(updatedRoomData: AddRoom):Observable<ResponseModel>{
+    return this.http.put<ResponseModel>(this.apiUrl, updatedRoomData);
   }
 
-  public deleteRoomRecord(roomData: AddRoom):Observable<ResponseModel>{
+  public deleteRoom(roomData: AddRoom):Observable<ResponseModel>{
     return this.http.delete<ResponseModel>(this.apiUrl,{ body: roomData })
   }
 }

@@ -2,9 +2,11 @@
     <h2 style="padding-top: 5px;">{{isEditMode ? 'Update Block Details' : 'Add New Block'}}</h2>
   <form [formGroup]="blockForm" (submit)="submitForm()" style="display: flex; flex-direction: column; margin: auto; width: 80%; padding: 30px 0;">
     <mat-form-field>
+      <mat-label>Block Floor No.</mat-label>
       <input matInput type="number" placeholder="Floor of the Block" formControlName="blockFloor" />
     </mat-form-field>
     <mat-form-field>
+      <mat-label>Block Code Of Hospital</mat-label>
       <input matInput type="number" placeholder="Block Code of the Hospital" formControlName="blockCode"/>
     </mat-form-field>
     <div>

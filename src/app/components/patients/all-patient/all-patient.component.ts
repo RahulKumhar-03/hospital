@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { PatientService } from '../../../core/services/patient/patient.service';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
-import { PatientDialogComponent } from '../create-update-patient-dialog/patient-dialog.component';
+import { PatientDialogComponent } from '../create-update-patient-dialog/create-update-patient-dialog.component';
 import { Patient } from '../../../core/interface/patient.interface';
 
 @Component({
@@ -27,7 +27,7 @@ export class AllPatientComponent implements OnInit {
     this.loadPatientRecords();
   }
   public loadPatientRecords() {
-    this.service.getAllPatientRecords().subscribe({
+    this.service.getPatient().subscribe({
       next: (res) => {
         this.patients = res;
       },
@@ -48,7 +48,7 @@ export class AllPatientComponent implements OnInit {
     dialog.afterClosed().subscribe((data) => {
       if (data) {
         if (data.patientId) {
-          this.service.updatePatientDetails(data).subscribe({
+          this.service.updatePatient(data).subscribe({
             next: (response) => {
               if (response.status) {
                 this.snackBar.open(
@@ -76,7 +76,7 @@ export class AllPatientComponent implements OnInit {
             },
           });
         } else {
-          this.service.createNewPatient(data).subscribe({
+          this.service.createPatient(data).subscribe({
             next: (response) => {
               if (response.status) {
                 this.snackBar.open(
@@ -107,7 +107,7 @@ export class AllPatientComponent implements OnInit {
 
   public deletepatient(patient: Patient) {
     if(confirm('Are you sure? You wanted to delete record!')){
-      this.service.deletePhysician(patient).subscribe({
+      this.service.deletePatient(patient).subscribe({
         next:(response) =>{
           if(response.status){
             this.snackBar.open('Patient Record Deleted Successfully.', 'Undo', {

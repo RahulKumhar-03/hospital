@@ -18,8 +18,8 @@ import { OnCall } from '../../../core/interface/on-call.interface';
   selector: 'app-on-call-dialog',
   providers: [provideNativeDateAdapter()],
   imports: [MatFormFieldModule, MatDatepickerModule, MatButtonModule, ReactiveFormsModule, MatSnackBarModule, MatInputModule, MatSelectModule],
-  templateUrl: './on-call-dialog.component.html',
-  styleUrl: './on-call-dialog.component.css'
+  templateUrl: './add-edit-on-call-dialog.component.html',
+  styleUrl: './add-edit-on-call-dialog.component.css'
 })
 export class OnCallDialogComponent implements OnInit {
   public isEditting: boolean = false
@@ -51,7 +51,7 @@ export class OnCallDialogComponent implements OnInit {
   }
 
   public loadBlockData():void{
-    this.blockService.getAllBlockDetails().subscribe({
+    this.blockService.getBlocks().subscribe({
       next:(res) =>{ 
         this.blockData = res;
       },
@@ -65,7 +65,7 @@ export class OnCallDialogComponent implements OnInit {
   }
 
   public loadNurseData():void{
-    this.nurseService.getAllNurseDetails().subscribe({
+    this.nurseService.getNurses().subscribe({
       next:(res) => {
         this.nurseData = res;
       },

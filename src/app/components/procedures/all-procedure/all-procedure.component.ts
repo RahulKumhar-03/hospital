@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from "@angular/material/button";
-import { ProcedureDialogComponent } from '../create-update-procedure-dialog/procedure-dialog.component';
+import { ProcedureDialogComponent } from '../create-update-procedure-dialog/create-update-procedure-dialog.component';
 import { MatIconModule } from '@angular/material/icon';
 import { Procedure } from '../../../core/interface/procedure.interface';
 @Component({
@@ -25,7 +25,7 @@ export class AllProcedureComponent implements OnInit {
   }
 
   public loadProcedures(){
-    this.service.getAllProcedures().subscribe({
+    this.service.getProcedures().subscribe({
       next:(response) => {
         this.procedures = response;
         this.dataSource.data = this.procedures
@@ -46,7 +46,7 @@ export class AllProcedureComponent implements OnInit {
     dialog.afterClosed().subscribe(data => {
       if(data){
         if(data.procedureId){
-          this.service.updateProcedureRecord(data).subscribe({
+          this.service.updateProcedure(data).subscribe({
             next:(res) => {
               if(res.status){
                 alert('Procedure Record Updated Successfully.');
@@ -60,7 +60,7 @@ export class AllProcedureComponent implements OnInit {
           })
         } 
         else {
-          this.service.createNewProcedureRecord(data).subscribe({
+          this.service.createProcedure(data).subscribe({
             next:(res) => {
               if(res.status){
                 alert('Added new Procedure Record.');
@@ -78,7 +78,7 @@ export class AllProcedureComponent implements OnInit {
   }
 
   public deleteProcedure(procedureData: Procedure){
-    this.service.deleteProcedureRecord(procedureData).subscribe({
+    this.service.deleteProcedure(procedureData).subscribe({
       next: (response) => {
         if(response.status){
           alert('Procedure Record Deleted Successfully.')

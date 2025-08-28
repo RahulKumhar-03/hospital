@@ -5,8 +5,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar'
 import { MatButtonModule } from '@angular/material/button';
 import { BlockService } from '../../../core/services/blocks/block.service';
-import { BlockDialogComponent } from '../add-edit-block-dialog/block-dialog.component';
 import { Block } from '../../../core/interface/block.interface';
+import { BlockDialogComponent } from '../add-edit-block-dialog/add-edit-block-dialog.component';
 
 @Component({
   selector: 'app-all-block',
@@ -25,7 +25,7 @@ export class AllBlockComponent {
   }
 
   public loadBlockDetails(){
-    this.service.getAllBlockDetails().subscribe({
+    this.service.getBlocks().subscribe({
       next: (res) => {
         this.dataSource.data = res;
       },
@@ -45,7 +45,7 @@ export class AllBlockComponent {
     dialog.afterClosed().subscribe(data => {
       if(data){
         if(data.blockId){
-          this.service.updateBlockDetail(data).subscribe({
+          this.service.updateBlock(data).subscribe({
             next:(res) => {
               if(res.status){
                 this.snackBar.open('Block Details Updated Successfully.')
@@ -59,7 +59,7 @@ export class AllBlockComponent {
           })
         }
         else {
-          this.service.createNewBlockRecord(data).subscribe({
+          this.service.createBlock(data).subscribe({
             next:(res) => {
               if(res.status){
                 this.snackBar.open('Added New Block Record.')
@@ -78,7 +78,7 @@ export class AllBlockComponent {
 
   public deleteBlock(blockData: Block){
     if(confirm('Are You Sure you wnat to delete this record?')){
-      this.service.deleteBlockRecord(blockData).subscribe({
+      this.service.deleteBlock(blockData).subscribe({
         next:(res) => {
           if(res.status){
             this.snackBar.open('Record Deleted Successfully.')

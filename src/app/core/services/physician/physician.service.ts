@@ -14,15 +14,15 @@ export class PhysicianService {
   
   constructor(private http: HttpClient) {}
 
-  public getAllPhysicians(): Observable<Physician[]> {
+  public getPhysicians(): Observable<Physician[]> {
     return this.http.get<Physician[]>(this.apiUrl)
   }
 
-  public createNewPhysician(newPhysicianData: PhysicianCreate): Observable<ResponseModel>{
+  public createPhysician(newPhysicianData: PhysicianCreate): Observable<ResponseModel>{
     return this.http.post<ResponseModel>(this.apiUrl, newPhysicianData)
   }
 
-  public updatePhysicianDetails(physicianData: PhysicianCreate):Observable<ResponseModel>{
+  public updatePhysician(physicianData: PhysicianCreate):Observable<ResponseModel>{
     return this.http.put<ResponseModel>(this.apiUrl, physicianData)
   }
 
@@ -30,7 +30,7 @@ export class PhysicianService {
     return this.http.delete<ResponseModel>(this.apiUrl, {body: physicianData})
   }
 
-  public getDetialsById(physicianId: number):Observable<Physician>{
+  public getPhysicianById(physicianId: number):Observable<Physician>{
     return this.http.get<Physician>(`${this.apiUrl}/${physicianId}`)
   }
 }

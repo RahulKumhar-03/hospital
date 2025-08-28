@@ -14,19 +14,19 @@ export class OnCallService {
   
   constructor(private http: HttpClient) {}
 
-  public getAllOnCallDetails(): Observable<OnCall[]> {
+  public getOnCalls(): Observable<OnCall[]> {
     return this.http.get<OnCall[]>(this.apiUrl)
   }
 
-  public createNewOnCallRecord(newOnCallData: AddOnCall): Observable<ResponseModel>{
+  public createOnCall(newOnCallData: AddOnCall): Observable<ResponseModel>{
     return this.http.post<ResponseModel>(this.apiUrl, newOnCallData)
   }
 
-  public updateOnCallDetails(updatedOnCallData: AddOnCall):Observable<ResponseModel>{
+  public updateOnCall(updatedOnCallData: AddOnCall):Observable<ResponseModel>{
     return this.http.put<ResponseModel>(this.apiUrl, updatedOnCallData)
   }
 
-  public deleteOnCallRecord(onCallData: AddOnCall):Observable<ResponseModel>{
+  public deleteOnCall(onCallData: AddOnCall):Observable<ResponseModel>{
     return this.http.delete<ResponseModel>(this.apiUrl, {body: onCallData})
   }
 }

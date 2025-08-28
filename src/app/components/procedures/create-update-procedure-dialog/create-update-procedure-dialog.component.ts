@@ -9,8 +9,8 @@ import { Procedure } from '../../../core/interface/procedure.interface';
 @Component({
   selector: 'app-procedure-dialog',
   imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule],
-  templateUrl: './procedure-dialog.component.html',
-  styleUrl: './procedure-dialog.component.css'
+  templateUrl: './create-update-procedure-dialog.component.html',
+  styleUrl: './create-update-procedure-dialog.component.css'
 })
 export class ProcedureDialogComponent implements OnInit {
   public procedureForm: FormGroup
