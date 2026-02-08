@@ -1,0 +1,48 @@
+<div style="justify-items: center;">
+    <h2 style="padding-top: 5px;">{{isEditting ? 'Update OnCall Record' : 'Add New OnCall Record'}}</h2>
+    
+    <form [formGroup]="onCallForm" (submit)="submitForm()" style="display: flex; flex-direction: column; margin: auto; width: 80%; padding: 30px 0;">
+        <mat-form-field>
+            <mat-label>Select Nurse ID</mat-label>
+            <mat-select formControlName="nurseId">
+                @for(nurse of nurseData; track nurse.name){
+                    <mat-option [value]="nurse.nurseId">{{nurse.nurseId}}-{{nurse.name}}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-label>Select Block ID</mat-label>
+            <mat-select formControlName="blockId">
+                @for(block of blockData; track block.blockCode){
+                    <mat-option [value]="block.blockId">{{block.blockId}}-{{block.blockCode}}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="onCallStartpicker" formControlName="onCallStart">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="onCallStartpicker"></mat-datepicker-toggle>
+            <mat-datepicker #onCallStartpicker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="onCallEnd">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <div>
+            <button mat-button [disabled]="onCallForm.invalid" type="submit">
+                Submit
+            </button>
+            <button mat-button (click)="onClose()">
+                Cancel
+            </button>
+        </div>
+    </form>
+</div>

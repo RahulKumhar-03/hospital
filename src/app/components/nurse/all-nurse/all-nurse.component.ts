@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Nurse } from '../../../interfaces';
-import { NurseService } from '../../../services/nurse/nurse.service';
+import { NurseService } from '../../../core/services/nurse/nurse.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { CreateUpdateNurseComponent } from '../create-update-nurse/create-update-nurse.component';
+import { CreateUpdateNurseComponent } from '../create-update-nurse-dialog/create-update-nurse.component';
+import { Nurse } from '../../../core/interface/nurse.interface';
 
 @Component({
   selector: 'app-all-nurse',
@@ -14,13 +14,13 @@ import { CreateUpdateNurseComponent } from '../create-update-nurse/create-update
   styleUrl: './all-nurse.component.css'
 })
 export class AllNurseComponent implements OnInit{
-  nurses: Nurse[] = []
+  public nurses: Nurse[] = []
   constructor(private service: NurseService, private dialog: MatDialog){}
   
   ngOnInit():void{
     this.loadNurseDetails();
   }
-  loadNurseDetails():void{
+  public loadNurseDetails():void{
     this.service.getAllNurseDetails().subscribe({
       next:(response) =>{
         this.nurses = response;
@@ -32,7 +32,7 @@ export class AllNurseComponent implements OnInit{
     })
   }
 
-  openNurseDialog(nurseData?: Nurse){
+  public openNurseDialog(nurseData?: Nurse){
     const dialog = this.dialog.open(CreateUpdateNurseComponent,{
       width:'500px',
       data: nurseData
@@ -70,7 +70,7 @@ export class AllNurseComponent implements OnInit{
     })
   }
 
-  deleteNurseRecord(nurseData: Nurse){
+  public deleteNurseRecord(nurseData: Nurse){
     if(confirm('Are you sure? You wanted to delete record!')){
       this.service.deleteNurseRecord(nurseData).subscribe({
         next:(response) => {

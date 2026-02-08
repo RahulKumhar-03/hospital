@@ -1,12 +1,12 @@
-import { Component, inject } from '@angular/core';
-import { Block } from '../../../interfaces';
+import { Component} from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar'
 import { MatButtonModule } from '@angular/material/button';
-import { BlockService } from '../../../services/blocks/block.service';
-import { BlockDialogComponent } from '../block-dialog/block-dialog.component';
+import { BlockService } from '../../../core/services/blocks/block.service';
+import { BlockDialogComponent } from '../add-edit-block-dialog/block-dialog.component';
+import { Block } from '../../../core/interface/block.interface';
 
 @Component({
   selector: 'app-all-block',
@@ -15,8 +15,8 @@ import { BlockDialogComponent } from '../block-dialog/block-dialog.component';
   styleUrl: './all-block.component.css'
 })
 export class AllBlockComponent {
-  dataSource = new MatTableDataSource<Block>();
-  displayedColumns: string[] = ['blockCode','blockFloor','action'];
+  public dataSource = new MatTableDataSource<Block>();
+  public displayedColumns: string[] = ['blockCode','blockFloor','action'];
 
   constructor(private service: BlockService, private dialog: MatDialog, private snackBar: MatSnackBar){}
 
@@ -24,7 +24,7 @@ export class AllBlockComponent {
     this.loadBlockDetails()
   }
 
-  loadBlockDetails(){
+  public loadBlockDetails(){
     this.service.getAllBlockDetails().subscribe({
       next: (res) => {
         this.dataSource.data = res;
@@ -36,7 +36,7 @@ export class AllBlockComponent {
     })
   }
 
-  openBlockDialog(blockData?: Block){
+  public openBlockDialog(blockData?: Block){
     let dialog = this.dialog.open(BlockDialogComponent,{
       width:'600px',
       data: blockData
@@ -76,7 +76,7 @@ export class AllBlockComponent {
     })
   }
 
-  deleteBlock(blockData: Block){
+  public deleteBlock(blockData: Block){
     if(confirm('Are You Sure you wnat to delete this record?')){
       this.service.deleteBlockRecord(blockData).subscribe({
         next:(res) => {
